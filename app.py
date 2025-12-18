@@ -129,18 +129,18 @@ if intersections_file and hierarchies_file:
         
         try:
             with st.spinner("Building Excel file..."):
-            
-            df = intersections[
-                (intersections['_Year'] == selected_year) & 
-                (intersections['_Scenario'] == 'Plan')
-            ].copy()
-            
-            st.info(f"▸ Processing {len(df):,} records for year {selected_year}")
-            
-            account_hier = hierarchies[hierarchies['_dim'] == 'Account'].copy()
-            dept_hier = hierarchies[hierarchies['_dim'] == 'Department'].copy()
-            
-            account_lookup = {}
+                
+                df = intersections[
+                    (intersections['_Year'] == selected_year) & 
+                    (intersections['_Scenario'] == 'Plan')
+                ].copy()
+                
+                st.info(f"▸ Processing {len(df):,} records for year {selected_year}")
+                
+                account_hier = hierarchies[hierarchies['_dim'] == 'Account'].copy()
+                dept_hier = hierarchies[hierarchies['_dim'] == 'Department'].copy()
+                
+                account_lookup = {}
             for _, row in account_hier.iterrows():
                 code = row['_member_name']
                 alias = row['_member_alias'] if pd.notna(row['_member_alias']) else code
