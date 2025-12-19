@@ -95,7 +95,7 @@ if intersections_file and hierarchies_file:
     with col3:
         fiscal_year = st.text_input("Fiscal Period", value="FY 2026 (Jan 2026 - Dec 2026)")
     
-    available_years = sorted(intersections['_Year'].unique())
+    available_years = sorted([int(year) for year in intersections['_Year'].unique()])
     selected_year = st.selectbox("Select Year for Export", available_years, index=len(available_years)-1)
     
     st.markdown("""
